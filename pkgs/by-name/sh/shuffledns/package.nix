@@ -3,6 +3,7 @@
   buildGoModule,
   fetchFromGitHub,
   versionCheckHook,
+  massdns,
 }:
 
 buildGoModule (finalAttrs: {
@@ -19,6 +20,8 @@ buildGoModule (finalAttrs: {
   vendorHash = "sha256-dWO/Dut4zwEkJfuBeXvE4Yx85hn0ufCPS9mV09gUrnc=";
 
   subPackages = [ "cmd/shuffledns" ];
+
+  propagatedBuildInputs = [ massdns ];
 
   nativeInstallCheckInputs = [ versionCheckHook ];
 
