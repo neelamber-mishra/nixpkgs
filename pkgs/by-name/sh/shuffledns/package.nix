@@ -22,12 +22,15 @@ buildGoModule (finalAttrs: {
 
   subPackages = [ "cmd/shuffledns" ];
 
-  nativeBuildInputs = [ makeWrapper versionCheckHook ];
+  nativeBuildInputs = [
+    makeWrapper
+    versionCheckHook
+  ];
 
-postInstall = ''
-  wrapProgram $out/bin/shuffledns \
-    --prefix PATH : ${lib.makeBinPath [ massdns ]}
-''; 
+  postInstall = ''
+    wrapProgram $out/bin/shuffledns \
+      --prefix PATH : ${lib.makeBinPath [ massdns ]}
+  '';
 
   ldflags = [
     "-s"
